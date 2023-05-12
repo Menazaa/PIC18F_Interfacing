@@ -4,16 +4,29 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <logicalFolder name="APPs" displayName="APPs" projectFiles="true">
+        <logicalFolder name="LEDs_Control"
+                       displayName="LEDs_Control"
+                       projectFiles="true">
+        </logicalFolder>
+      </logicalFolder>
       <logicalFolder name="ECU" displayName="ECU" projectFiles="true">
+        <logicalFolder name="LEDs" displayName="LEDs" projectFiles="true">
+          <itemPath>ECU/LEDs/ecu_led.h</itemPath>
+        </logicalFolder>
+      </logicalFolder>
+      <logicalFolder name="LIB" displayName="LIB" projectFiles="true">
+        <itemPath>LIB/std_libraries.h</itemPath>
       </logicalFolder>
       <logicalFolder name="MCAL" displayName="MCAL" projectFiles="true">
         <logicalFolder name="GPIO" displayName="GPIO" projectFiles="true">
           <itemPath>MCAL/GPIO/hal_gpio.h</itemPath>
         </logicalFolder>
         <itemPath>MCAL/mcal_std_types.h</itemPath>
-        <itemPath>MCAL/std_libraries.h</itemPath>
         <itemPath>MCAL/compiler.h</itemPath>
+        <itemPath>MCAL/device_config.h</itemPath>
       </logicalFolder>
+      <itemPath>Application.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -22,12 +35,24 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <logicalFolder name="APPs" displayName="APPs" projectFiles="true">
+        <logicalFolder name="LEDs_Control"
+                       displayName="LEDs_Control"
+                       projectFiles="true">
+        </logicalFolder>
+      </logicalFolder>
       <logicalFolder name="ECU" displayName="ECU" projectFiles="true">
+        <logicalFolder name="LEDs" displayName="LEDs" projectFiles="true">
+          <itemPath>ECU/LEDs/ecu_led.c</itemPath>
+        </logicalFolder>
+      </logicalFolder>
+      <logicalFolder name="LIB" displayName="LIB" projectFiles="true">
       </logicalFolder>
       <logicalFolder name="MCAL" displayName="MCAL" projectFiles="true">
         <logicalFolder name="GPIO" displayName="GPIO" projectFiles="true">
           <itemPath>MCAL/GPIO/hal_gpio.c</itemPath>
         </logicalFolder>
+        <itemPath>MCAL/device_config.c</itemPath>
       </logicalFolder>
       <itemPath>Application.c</itemPath>
     </logicalFolder>
@@ -40,6 +65,8 @@
   <sourceRootList>
     <Elem>ECU</Elem>
     <Elem>MCAL</Elem>
+    <Elem>APPs</Elem>
+    <Elem>LIB</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>

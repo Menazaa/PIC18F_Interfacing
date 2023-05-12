@@ -10,8 +10,9 @@
 #ifndef HAL_GPIO_H
 #define	HAL_GPIO_H
 
-#include"../mcal_std_types.h"
-
+#include "../compiler.h"
+#include "../mcal_std_types.h"
+#include "../device_config.h"
 
 
 #endif	/* HAL_GPIO_H */

@@ -1,6 +1,5 @@
-build/default/production/Application.p1:  \
-Application.c  \
-Application.h  \
+build/default/production/ECU/LEDs/ecu_led.p1:  \
+ECU/LEDs/ecu_led.c  \
 ECU/LEDs/ecu_led.h  \
 ECU/LEDs/../../MCAL/GPIO/hal_gpio.h  \
 ECU/LEDs/../../MCAL/GPIO/../compiler.h  \

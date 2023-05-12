@@ -8,8 +8,7 @@
 #ifndef MCAL_STD_TYPES_H
 #define	MCAL_STD_TYPES_H
 
-#include "compiler.h"
-#include "mcal_std_types.h"
+#include "../LIB/std_libraries.h"
 
 
 #endif	/* MCAL_STD_TYPES_H */

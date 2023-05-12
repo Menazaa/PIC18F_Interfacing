@@ -11,6 +11,8 @@
             <sourceRootList>
                 <sourceRootElem>ECU</sourceRootElem>
                 <sourceRootElem>MCAL</sourceRootElem>
+                <sourceRootElem>APPs</sourceRootElem>
+                <sourceRootElem>LIB</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>
