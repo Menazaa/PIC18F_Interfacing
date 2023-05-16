@@ -8,7 +8,18 @@
 #ifndef ECU_LED_H
 #define	ECU_LED_H
 
+/* Section : Includes */
+
 #include "../../MCAL/GPIO/hal_gpio.h"
+
+/* Section : Macros Declarations */
+
+/* Section : Macros Functions Declarations */
+
+/* Section : Data Types Declarations */
+
+
+/* Section : Functions Declarations */
 
 #endif	/* ECU_LED_H */
 
