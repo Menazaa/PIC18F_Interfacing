@@ -26,6 +26,8 @@
 #define STD_ACTIVE      0X01
 #define STD_IDLE        0X00
 
+#define __IO     volatile
+
 /* Section : Macros Functions Declarations */
 
 /* Section : Data Types Declarations */

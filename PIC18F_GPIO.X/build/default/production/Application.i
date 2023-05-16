@@ -4643,7 +4643,7 @@ char *ctermid(char *);
 
 char *tempnam(const char *, const char *);
 # 15 "./ECU/LEDs/../../MCAL/GPIO/../../LIB/std_libraries.h" 2
-# 32 "./ECU/LEDs/../../MCAL/GPIO/../../LIB/std_libraries.h"
+# 34 "./ECU/LEDs/../../MCAL/GPIO/../../LIB/std_libraries.h"
 typedef unsigned char uint8;
 typedef unsigned short uint16;
 typedef unsigned long uint32;
@@ -4710,19 +4710,74 @@ typedef struct{
     uint8 direction:1;
     uint8 state:1;
 }pin_t;
-
-
-
+# 73 "./ECU/LEDs/../../MCAL/GPIO/hal_gpio.h"
 STD_ReturnType gpio_pin_direction_initialize(const pin_t *_pin);
-STD_ReturnType gpio_pin_get_direction_status(const pin_t *_pin);
+
+
+
+
+
+
+STD_ReturnType gpio_pin_get_direction_status(pin_t *_pin);
+
+
+
+
+
+
 STD_ReturnType gpio_pin_write_logic(const pin_t *_pin);
-STD_ReturnType gpio_pin_read_logic(const pin_t *_pin);
-STD_ReturnType gpio_pin_toggle_logic(const pin_t *_pin);
+
+
+
+
+
+
+STD_ReturnType gpio_pin_read_logic(pin_t *_pin);
+
+
+
+
+
+
+STD_ReturnType gpio_pin_toggle_logic(pin_t *_pin);
+
+
+
+
+
+
 
 STD_ReturnType gpio_port_direction_initialize(const port_index_t *_port, uint8 direction);
+
+
+
+
+
+
+
 STD_ReturnType gpio_port_get_direction_status(const port_index_t *_port, uint8* direction);
+
+
+
+
+
+
+
 STD_ReturnType gpio_port_write_logic(const port_index_t *_port, uint8 logic);
+
+
+
+
+
+
+
 STD_ReturnType gpio_port_read_logic(const port_index_t *_port, uint8* logic);
+
+
+
+
+
+
 STD_ReturnType gpio_port_toggle_logic(const port_index_t *_port);
 # 13 "./ECU/LEDs/ecu_led.h" 2
 # 13 "./Application.h" 2

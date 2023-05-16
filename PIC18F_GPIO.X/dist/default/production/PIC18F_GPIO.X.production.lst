@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.41 build 20230208172133 
-                                                                                               Tue May 16 19:02:44 2023
+                                                                                               Tue May 16 19:33:53 2023
 
 Microchip MPLAB XC8 C Compiler v2.41 (Free license) build 20230208172133 Og1 
      1                           	processor	18F4620
@@ -191,7 +191,7 @@ Microchip MPLAB XC8 C Compiler v2.41 (Free license) build 20230208172133 Og1
    177 ;; Auto vars:     Size  Location     Type
    178 ;;		None
    179 ;; Return value:  Size  Location     Type
-   180 ;;                  2   87[None  ] int 
+   180 ;;                  2  106[None  ] int 
    181 ;; Registers used:
    182 ;;		None
    183 ;; Tracked objects:
@@ -468,15 +468,15 @@ Auto Spaces:
 
 Pointer List with Targets:
 
-    PORT_REGESTERS	PTR unsigned char [5] size(2) Largest target is 1
+    PORT_REGESTERS	PTR volatile unsigned char [5] size(2) Largest target is 1
 		 -> PORTE(BITBIGSFRll[1]), PORTD(BITBIGSFRll[1]), PORTC(BITBIGSFRll[1]), PORTB(BITBIGSFRll[1]), 
 		 -> PORTA(BITBIGSFRll[1]), 
 
-    LAT_REGESTERS	PTR unsigned char [5] size(2) Largest target is 1
+    LAT_REGESTERS	PTR volatile unsigned char [5] size(2) Largest target is 1
 		 -> LATE(BITBIGSFRlh[1]), LATD(BITBIGSFRlh[1]), LATC(BITBIGSFRlh[1]), LATB(BITBIGSFRlh[1]), 
 		 -> LATA(BITBIGSFRll[1]), 
 
-    TRIS_REGESTERS	PTR unsigned char [5] size(2) Largest target is 1
+    TRIS_REGESTERS	PTR volatile unsigned char [5] size(2) Largest target is 1
 		 -> TRISE(BITBIGSFRh[1]), TRISD(BITBIGSFRh[1]), TRISC(BITBIGSFRh[1]), TRISB(BITBIGSFRh[1]), 
 		 -> TRISA(BITBIGSFRll[1]), 
 
@@ -615,9 +615,9 @@ CODE                 0      0       0       0        0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V2.41 build 20230208172133 
-Symbol Table                                                                                   Tue May 16 19:02:44 2023
+Symbol Table                                                                                   Tue May 16 19:33:53 2023
 
-                     l88 FFB2                      l798 FFB2                      _ret 001F  
+                    l107 FFB2                      l875 FFB2                      _ret 001F  
                    _LATA 0F89                     _LATB 0F8A                     _LATC 0F8B  
                    _LATD 0F8C                     _LATE 0F8D                     _main FFB2  
                    fsr1l 0FE1                     start 0000             ___param_bank 0000  

@@ -4640,7 +4640,7 @@ char *ctermid(char *);
 
 char *tempnam(const char *, const char *);
 # 15 "MCAL/GPIO/../../LIB/std_libraries.h" 2
-# 32 "MCAL/GPIO/../../LIB/std_libraries.h"
+# 34 "MCAL/GPIO/../../LIB/std_libraries.h"
 typedef unsigned char uint8;
 typedef unsigned short uint16;
 typedef unsigned long uint32;
@@ -4707,30 +4707,89 @@ typedef struct{
     uint8 direction:1;
     uint8 state:1;
 }pin_t;
-
-
-
+# 73 "MCAL/GPIO/hal_gpio.h"
 STD_ReturnType gpio_pin_direction_initialize(const pin_t *_pin);
-STD_ReturnType gpio_pin_get_direction_status(const pin_t *_pin);
+
+
+
+
+
+
+STD_ReturnType gpio_pin_get_direction_status(pin_t *_pin);
+
+
+
+
+
+
 STD_ReturnType gpio_pin_write_logic(const pin_t *_pin);
-STD_ReturnType gpio_pin_read_logic(const pin_t *_pin);
-STD_ReturnType gpio_pin_toggle_logic(const pin_t *_pin);
+
+
+
+
+
+
+STD_ReturnType gpio_pin_read_logic(pin_t *_pin);
+
+
+
+
+
+
+STD_ReturnType gpio_pin_toggle_logic(pin_t *_pin);
+
+
+
+
+
+
 
 STD_ReturnType gpio_port_direction_initialize(const port_index_t *_port, uint8 direction);
+
+
+
+
+
+
+
 STD_ReturnType gpio_port_get_direction_status(const port_index_t *_port, uint8* direction);
+
+
+
+
+
+
+
 STD_ReturnType gpio_port_write_logic(const port_index_t *_port, uint8 logic);
+
+
+
+
+
+
+
 STD_ReturnType gpio_port_read_logic(const port_index_t *_port, uint8* logic);
+
+
+
+
+
+
 STD_ReturnType gpio_port_toggle_logic(const port_index_t *_port);
 # 9 "MCAL/GPIO/hal_gpio.c" 2
 
 
 
-uint8 *TRIS_REGESTERS[5] = {&TRISA, &TRISB, &TRISC, &TRISD, &TRISE};
+volatile uint8 *TRIS_REGESTERS[5] = {&TRISA, &TRISB, &TRISC, &TRISD, &TRISE};
 
-uint8 *LAT_REGESTERS[5] = {&LATA, &LATB, &LATC, &LATD, &LATE};
+volatile uint8 *LAT_REGESTERS[5] = {&LATA, &LATB, &LATC, &LATD, &LATE};
 
-uint8 *PORT_REGESTERS[5] = {&PORTA, &PORTB, &PORTC, &PORTD, &PORTE};
+volatile uint8 *PORT_REGESTERS[5] = {&PORTA, &PORTB, &PORTC, &PORTD, &PORTE};
 STD_ReturnType ret = E_OK;
+
+
+
+
 
 
 
@@ -4751,54 +4810,140 @@ STD_ReturnType gpio_pin_direction_initialize(const pin_t *_pin){
     }
     return ret;
 }
-STD_ReturnType gpio_pin_get_direction_status(const pin_t *_pin){
+
+
+
+
+
+
+STD_ReturnType gpio_pin_get_direction_status(pin_t *_pin){
     if(((void*)0) == _pin){
         ret = E_NOT_OK;
     }else{
-
+        _pin->direction = (((*TRIS_REGESTERS[_pin->port])>>_pin->pin) & 1);
     }
     return ret;
 }
+
+
+
+
+
+
 STD_ReturnType gpio_pin_write_logic(const pin_t *_pin){
     if(((void*)0) == _pin){
         ret = E_NOT_OK;
     }else{
-
+        switch(_pin->state){
+            case GPIO_LOW:
+                ((*LAT_REGESTERS[_pin->port]) &= (~(1<<_pin->pin)));
+            break;
+            case GPIO_HIGH:
+                ((*LAT_REGESTERS[_pin->port]) |=(1<<_pin->pin));
+            break;
+            default: ret = E_NOT_OK;
+        }
     }
     return ret;
 }
-STD_ReturnType gpio_pin_read_logic(const pin_t *_pin){
+
+
+
+
+
+
+STD_ReturnType gpio_pin_read_logic(pin_t *_pin){
     if(((void*)0) == _pin){
         ret = E_NOT_OK;
     }else{
-
+        _pin->state = (((*LAT_REGESTERS[_pin->port])>>_pin->pin) & 1);
     }
     return ret;
 }
-STD_ReturnType gpio_pin_toggle_logic(const pin_t *_pin){
+
+
+
+
+
+
+STD_ReturnType gpio_pin_toggle_logic(pin_t *_pin){
     if(((void*)0) == _pin){
         ret = E_NOT_OK;
     }else{
-
+        _pin->state = ((*LAT_REGESTERS[_pin->port]) ^=(1<<_pin->pin));
     }
     return ret;
 }
-
-
-
-
+# 115 "MCAL/GPIO/hal_gpio.c"
 STD_ReturnType gpio_port_direction_initialize(const port_index_t *_port, uint8 direction){
+    STD_ReturnType ret = E_OK;
+    if(((void*)0) == _port){
+        ret = E_NOT_OK;
+    }else{
 
+    }
+    return ret;
 }
+
+
+
+
+
+
+
 STD_ReturnType gpio_port_get_direction_status(const port_index_t *_port, uint8* direction){
+    STD_ReturnType ret = E_OK;
+    if((((void*)0) == _port) || (((void*)0) == direction)){
+        ret = E_NOT_OK;
+    }else{
 
+    }
+    return ret;
 }
+
+
+
+
+
+
+
 STD_ReturnType gpio_port_write_logic(const port_index_t *_port, uint8 logic){
+    STD_ReturnType ret = E_OK;
+    if(((void*)0) == _port){
+        ret = E_NOT_OK;
+    }else{
 
+    }
+    return ret;
 }
+
+
+
+
+
+
+
 STD_ReturnType gpio_port_read_logic(const port_index_t *_port, uint8* logic){
+    STD_ReturnType ret = E_OK;
+    if((((void*)0) == _port) || (((void*)0) == logic)){
+        ret = E_NOT_OK;
+    }else{
 
+    }
+    return ret;
 }
-STD_ReturnType gpio_port_toggle_logic(const port_index_t *_port){
 
+
+
+
+
+
+STD_ReturnType gpio_port_toggle_logic(const port_index_t *_port){
+    STD_ReturnType ret = E_OK;
+    if(((void*)0) == _port){
+        ret = E_NOT_OK;
+    }else{
+
+    }
+    return ret;
 }
