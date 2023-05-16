@@ -77,7 +77,7 @@ STD_ReturnType gpio_pin_direction_initialize(const pin_t *_pin);
  * @param _pin
  * @return STD_ReturnType (E_OK or E_NOT_OK)
  */
-STD_ReturnType gpio_pin_get_direction_status(const pin_t *_pin);
+STD_ReturnType gpio_pin_get_direction_status(pin_t *_pin);
 
 /**
  * 
@@ -91,14 +91,14 @@ STD_ReturnType gpio_pin_write_logic(const pin_t *_pin);
  * @param _pin
  * @return STD_ReturnType (E_OK or E_NOT_OK)
  */
-STD_ReturnType gpio_pin_read_logic(const pin_t *_pin);
+STD_ReturnType gpio_pin_read_logic(pin_t *_pin);
 
 /**
  * 
  * @param _pin
  * @return STD_ReturnType (E_OK or E_NOT_OK)
  */
-STD_ReturnType gpio_pin_toggle_logic(const pin_t *_pin);
+STD_ReturnType gpio_pin_toggle_logic(pin_t *_pin);
 
 /**
  * 
