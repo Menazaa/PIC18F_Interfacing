@@ -11,6 +11,7 @@
 
 /* Section : Includes */
 
+#include "BIT_MATH.h"
 #include <stdio.h>
 #include <stdlib.h>
 
