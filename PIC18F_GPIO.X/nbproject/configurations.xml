@@ -17,6 +17,7 @@
       </logicalFolder>
       <logicalFolder name="LIB" displayName="LIB" projectFiles="true">
         <itemPath>LIB/std_libraries.h</itemPath>
+        <itemPath>LIB/BIT_MATH.h</itemPath>
       </logicalFolder>
       <logicalFolder name="MCAL" displayName="MCAL" projectFiles="true">
         <logicalFolder name="GPIO" displayName="GPIO" projectFiles="true">

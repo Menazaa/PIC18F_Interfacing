@@ -4637,6 +4637,24 @@ char *ctermid(char *);
 
 char *tempnam(const char *, const char *);
 # 14 "MCAL/GPIO/../../LIB/std_libraries.h" 2
+# 31 "MCAL/GPIO/../../LIB/std_libraries.h"
+typedef unsigned char uint8;
+typedef unsigned short uint16;
+typedef unsigned long uint32;
+typedef unsigned long long uint64;
+
+typedef char sint8;
+typedef short sint16;
+typedef long sint32;
+typedef long long sint64;
+
+
+typedef uint8 STD_ReturnType;
+
+typedef enum{
+    E_OK = 0x00,
+    E_NOT_OK = 0x01
+}STD_Return_State;
 # 13 "MCAL/GPIO/../mcal_std_types.h" 2
 # 17 "MCAL/GPIO/hal_gpio.h" 2
 
