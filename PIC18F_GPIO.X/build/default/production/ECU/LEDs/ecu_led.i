@@ -4675,7 +4675,7 @@ typedef enum{
 typedef enum{
     GPIO_LOW,
     GPIO_HIGH
-}logic_t;
+}gpio_logic_t;
 
 typedef enum{
     GPIO_OUTPUT,

@@ -3,7 +3,17 @@
 [d edition pro ]
 [d chip 18F4620 ]
 [d frameptr 4065 ]
-"37 F:\Projects\Embedded\PIC\Code\PIC18F_Interfacing\PIC18F_GPIO.X\MCAL/GPIO/hal_gpio.c
+"17 F:\Projects\Embedded\PIC\Code\PIC18F_Interfacing\PIC18F_GPIO.X\MCAL/GPIO/hal_gpio.c
+[e E2803 . `uc
+E_OK 0
+E_NOT_OK 1
+]
+"34
+[e E2811 . `uc
+GPIO_OUTPUT 0
+GPIO_INPUT 1
+]
+"74
 [e E2815 . `uc
 PORTA_INDEX 0
 PORTB_INDEX 1
@@ -67,6 +77,10 @@ PORTE_INDEX 4
 [v _TRISD TRISD `VEuc  1 e 1 @3989 ]
 "2268
 [v _TRISE TRISE `VEuc  1 e 1 @3990 ]
+"12 F:\Projects\Embedded\PIC\Code\PIC18F_Interfacing\PIC18F_GPIO.X\MCAL/GPIO/hal_gpio.c
+[v _TRIS_REGESTERS TRIS_REGESTERS `[5]*.39uc  1 e 10 0 ]
+"17
+[v _ret ret `uc  1 e 1 0 ]
 "13 F:\Projects\Embedded\PIC\Code\PIC18F_Interfacing\PIC18F_GPIO.X\Application.c
 [v _main main `(i  1 e 2 0 ]
 {

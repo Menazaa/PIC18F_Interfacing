@@ -4673,7 +4673,7 @@ typedef enum{
 typedef enum{
     GPIO_LOW,
     GPIO_HIGH
-}logic_t;
+}gpio_logic_t;
 
 typedef enum{
     GPIO_OUTPUT,
@@ -4726,25 +4726,62 @@ STD_ReturnType gpio_port_toggle_logic(const port_index_t *_port);
 
 
 uint8 *TRIS_REGESTERS[5] = {&TRISA, &TRISB, &TRISC, &TRISD, &TRISE};
+
 uint8 *LAT_REGESTERS[5] = {&LATA, &LATB, &LATC, &LATD, &LATE};
+
 uint8 *PORT_REGESTERS[5] = {&PORTA, &PORTB, &PORTC, &PORTD, &PORTE};
+STD_ReturnType ret = E_OK;
 
 
 
 STD_ReturnType gpio_pin_direction_initialize(const pin_t *_pin){
-
+    STD_ReturnType ret = E_OK;
+    if(((void*)0) == _pin){
+        ret = E_NOT_OK;
+    }else{
+        switch(_pin->direction){
+            case GPIO_OUTPUT:
+                ((*TRIS_REGESTERS[_pin->port]) &= (~(1<<_pin->pin)));
+            break;
+            case GPIO_INPUT:
+                ((*TRIS_REGESTERS[_pin->port]) |=(1<<_pin->pin));
+            break;
+            default: ret = E_NOT_OK;
+        }
+    }
+    return ret;
 }
 STD_ReturnType gpio_pin_get_direction_status(const pin_t *_pin){
+    if(((void*)0) == _pin){
+        ret = E_NOT_OK;
+    }else{
 
+    }
+    return ret;
 }
 STD_ReturnType gpio_pin_write_logic(const pin_t *_pin){
+    if(((void*)0) == _pin){
+        ret = E_NOT_OK;
+    }else{
 
+    }
+    return ret;
 }
 STD_ReturnType gpio_pin_read_logic(const pin_t *_pin){
+    if(((void*)0) == _pin){
+        ret = E_NOT_OK;
+    }else{
 
+    }
+    return ret;
 }
 STD_ReturnType gpio_pin_toggle_logic(const pin_t *_pin){
+    if(((void*)0) == _pin){
+        ret = E_NOT_OK;
+    }else{
 
+    }
+    return ret;
 }
 
 

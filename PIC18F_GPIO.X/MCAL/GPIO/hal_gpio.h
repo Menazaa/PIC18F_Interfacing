@@ -25,7 +25,7 @@
 typedef enum{
     GPIO_LOW,
     GPIO_HIGH
-}logic_t;
+}gpio_logic_t;
 
 typedef enum{
     GPIO_OUTPUT,
@@ -54,10 +54,10 @@ typedef enum{
 }pin_index_t;
 
 typedef struct{
-    uint8 port:3;
-    uint8 pin:3;
-    uint8 direction:1;
-    uint8 state:1;
+    uint8 port:3;       /* @ref port_index_t */
+    uint8 pin:3;        /* @ref pin_index_t */
+    uint8 direction:1;  /* @ref direction_t */
+    uint8 state:1;      /* @ref gpio_logic_t */
 }pin_t;
 /* Section : Functions Declarations */
 
