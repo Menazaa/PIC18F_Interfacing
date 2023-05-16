@@ -59,19 +59,84 @@ typedef struct{
     uint8 direction:1;  /* @ref direction_t */
     uint8 state:1;      /* @ref gpio_logic_t */
 }pin_t;
+
+
 /* Section : Functions Declarations */
 
 
+
+/**
+ * 
+ * @param _pin
+ * @return STD_ReturnType (E_OK or E_NOT_OK)
+ */
 STD_ReturnType gpio_pin_direction_initialize(const pin_t *_pin);
+
+/**
+ * 
+ * @param _pin
+ * @return STD_ReturnType (E_OK or E_NOT_OK)
+ */
 STD_ReturnType gpio_pin_get_direction_status(const pin_t *_pin);
+
+/**
+ * 
+ * @param _pin
+ * @return STD_ReturnType (E_OK or E_NOT_OK)
+ */
 STD_ReturnType gpio_pin_write_logic(const pin_t *_pin);
+
+/**
+ * 
+ * @param _pin
+ * @return STD_ReturnType (E_OK or E_NOT_OK)
+ */
 STD_ReturnType gpio_pin_read_logic(const pin_t *_pin);
+
+/**
+ * 
+ * @param _pin
+ * @return STD_ReturnType (E_OK or E_NOT_OK)
+ */
 STD_ReturnType gpio_pin_toggle_logic(const pin_t *_pin);
 
+/**
+ * 
+ * @param _port
+ * @param direction
+ * @return STD_ReturnType (E_OK or E_NOT_OK)
+ */
 STD_ReturnType gpio_port_direction_initialize(const port_index_t *_port, uint8 direction);
+
+/**
+ * 
+ * @param _port
+ * @param direction
+ * @return STD_ReturnType (E_OK or E_NOT_OK)
+ */
 STD_ReturnType gpio_port_get_direction_status(const port_index_t *_port, uint8* direction);
+
+/**
+ * 
+ * @param _port
+ * @param logic
+ * @return STD_ReturnType (E_OK or E_NOT_OK)
+ */
 STD_ReturnType gpio_port_write_logic(const port_index_t *_port, uint8 logic);
+
+/**
+ * 
+ * @param _port
+ * @param logic
+ * @return STD_ReturnType (E_OK or E_NOT_OK)
+ */
 STD_ReturnType gpio_port_read_logic(const port_index_t *_port, uint8* logic);
+
+/**
+ * 
+ * @param _port
+ * @return STD_ReturnType (E_OK or E_NOT_OK)
+ */
 STD_ReturnType gpio_port_toggle_logic(const port_index_t *_port);
 
 
