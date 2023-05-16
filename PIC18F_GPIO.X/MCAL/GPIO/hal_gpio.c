@@ -8,9 +8,11 @@
 
 #include "hal_gpio.h"
 
-
+/* Reference to the Data Direction Control Registers */
 uint8   *TRIS_REGESTERS[5] =   {&TRISA, &TRISB, &TRISC, &TRISD, &TRISE};
+/* Reference to the Data Latch Registers */
 uint8   *LAT_REGESTERS[5]  =   {&LATA, &LATB, &LATC, &LATD, &LATE};
+/* Reference to Port Registers */
 uint8   *PORT_REGESTERS[5] =   {&PORTA, &PORTB, &PORTC, &PORTD, &PORTE};
 
 
