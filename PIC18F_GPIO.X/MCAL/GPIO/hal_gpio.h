@@ -18,7 +18,9 @@
 #include "../device_config.h"
 
 /* Section : Macros Declarations */
-
+#define MAXPORT_INDEX   0x04
+#define EIGHTBIT_MASK   0xFF
+#define PORT_MASK       EIGHTBIT_MASK
 /* Section : Macros Functions Declarations */
 
 /* Section : Data Types Declarations */
@@ -106,7 +108,7 @@ STD_ReturnType gpio_pin_toggle_logic(pin_t *_pin);
  * @param direction
  * @return STD_ReturnType (E_OK or E_NOT_OK)
  */
-STD_ReturnType gpio_port_direction_initialize(const port_index_t *_port, uint8 direction);
+STD_ReturnType gpio_port_direction_initialize(const port_index_t _port, uint8 direction);
 
 /**
  * 
@@ -114,7 +116,7 @@ STD_ReturnType gpio_port_direction_initialize(const port_index_t *_port, uint8 d
  * @param direction
  * @return STD_ReturnType (E_OK or E_NOT_OK)
  */
-STD_ReturnType gpio_port_get_direction_status(const port_index_t *_port, uint8* direction);
+STD_ReturnType gpio_port_get_direction_status(const port_index_t _port, uint8* direction);
 
 /**
  * 
@@ -122,7 +124,7 @@ STD_ReturnType gpio_port_get_direction_status(const port_index_t *_port, uint8* 
  * @param logic
  * @return STD_ReturnType (E_OK or E_NOT_OK)
  */
-STD_ReturnType gpio_port_write_logic(const port_index_t *_port, uint8 logic);
+STD_ReturnType gpio_port_write_logic(const port_index_t _port, uint8 logic);
 
 /**
  * 
@@ -130,14 +132,14 @@ STD_ReturnType gpio_port_write_logic(const port_index_t *_port, uint8 logic);
  * @param logic
  * @return STD_ReturnType (E_OK or E_NOT_OK)
  */
-STD_ReturnType gpio_port_read_logic(const port_index_t *_port, uint8* logic);
+STD_ReturnType gpio_port_read_logic(const port_index_t _port, uint8* logic);
 
 /**
  * 
  * @param _port
  * @return STD_ReturnType (E_OK or E_NOT_OK)
  */
-STD_ReturnType gpio_port_toggle_logic(const port_index_t *_port);
+STD_ReturnType gpio_port_toggle_logic(const port_index_t _port);
 
 
 

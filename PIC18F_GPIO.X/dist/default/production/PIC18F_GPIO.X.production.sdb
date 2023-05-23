@@ -3,22 +3,22 @@
 [d edition pro ]
 [d chip 18F4620 ]
 [d frameptr 4065 ]
-"17 F:\Projects\Embedded\PIC\Code\PIC18F_Interfacing\PIC18F_GPIO.X\MCAL/GPIO/hal_gpio.c
+"26 F:\Projects\Embedded\PIC\Code\PIC18F_Interfacing\PIC18F_GPIO.X\MCAL/GPIO/hal_gpio.c
 [e E2803 . `uc
 E_OK 0
 E_NOT_OK 1
 ]
-"38
+"40
 [e E2811 . `uc
 GPIO_OUTPUT 0
 GPIO_INPUT 1
 ]
-"74
+"78
 [e E2807 . `uc
 GPIO_LOW 0
 GPIO_HIGH 1
 ]
-"115
+"121
 [e E2815 . `uc
 PORTA_INDEX 0
 PORTB_INDEX 1
@@ -26,7 +26,19 @@ PORTC_INDEX 2
 PORTD_INDEX 3
 PORTE_INDEX 4
 ]
-"13 F:\Projects\Embedded\PIC\Code\PIC18F_Interfacing\PIC18F_GPIO.X\Application.c
+"16 F:\Projects\Embedded\PIC\Code\PIC18F_Interfacing\PIC18F_GPIO.X\Application.c
+[e E2815 . `uc
+PORTA_INDEX 0
+PORTB_INDEX 1
+PORTC_INDEX 2
+PORTD_INDEX 3
+PORTE_INDEX 4
+]
+[e E2811 . `uc
+GPIO_OUTPUT 0
+GPIO_INPUT 1
+]
+"15
 [v _main main `(i  1 e 2 0 ]
 "4 C:\Program Files\Microchip\xc8\v2.41\pic\sources\c99\common\fleq.c
 [v ___fleq __fleq `(b  1 e 0 0 ]
@@ -52,6 +64,10 @@ PORTE_INDEX 4
 [v ___lmul __lmul `(ul  1 e 4 0 ]
 "91 C:\Program Files\Microchip\xc8\v2.41\pic\sources\c99\common\Umul64.c
 [v ___omul __omul `(uo  1 e 8 0 ]
+"121 F:\Projects\Embedded\PIC\Code\PIC18F_Interfacing\PIC18F_GPIO.X\MCAL/GPIO/hal_gpio.c
+[v _gpio_port_direction_initialize gpio_port_direction_initialize `(uc  1 e 1 0 ]
+"186
+[v _gpio_port_toggle_logic gpio_port_toggle_logic `(uc  1 e 1 0 ]
 "52 C:/Users/moham/.mchp_packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h
 [v _PORTA PORTA `VEuc  1 e 1 @3968 ]
 "189
@@ -86,10 +102,25 @@ PORTE_INDEX 4
 [v _TRIS_REGESTERS TRIS_REGESTERS `[5]*.39VEuc  1 e 10 0 ]
 "14
 [v _LAT_REGESTERS LAT_REGESTERS `[5]*.39VEuc  1 e 10 0 ]
-"17
-[v _ret ret `uc  1 e 1 0 ]
-"13 F:\Projects\Embedded\PIC\Code\PIC18F_Interfacing\PIC18F_GPIO.X\Application.c
+"15 F:\Projects\Embedded\PIC\Code\PIC18F_Interfacing\PIC18F_GPIO.X\Application.c
 [v _main main `(i  1 e 2 0 ]
 {
-"16
+"22
+} 0
+"186 F:\Projects\Embedded\PIC\Code\PIC18F_Interfacing\PIC18F_GPIO.X\MCAL/GPIO/hal_gpio.c
+[v _gpio_port_toggle_logic gpio_port_toggle_logic `(uc  1 e 1 0 ]
+{
+[v gpio_port_toggle_logic@_port _port `CE2815  1 a 1 wreg ]
+[v gpio_port_toggle_logic@_port _port `CE2815  1 a 1 wreg ]
+[v gpio_port_toggle_logic@_port _port `CE2815  1 a 1 4 ]
+"194
+} 0
+"121
+[v _gpio_port_direction_initialize gpio_port_direction_initialize `(uc  1 e 1 0 ]
+{
+[v gpio_port_direction_initialize@_port _port `CE2815  1 a 1 wreg ]
+[v gpio_port_direction_initialize@_port _port `CE2815  1 a 1 wreg ]
+[v gpio_port_direction_initialize@direction direction `uc  1 p 1 0 ]
+[v gpio_port_direction_initialize@_port _port `CE2815  1 a 1 3 ]
+"131
 } 0

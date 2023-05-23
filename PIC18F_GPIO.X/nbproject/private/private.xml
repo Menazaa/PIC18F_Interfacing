@@ -5,6 +5,7 @@
         <group>
             <file>file:/F:/Projects/Embedded/PIC/Code/PIC18F_Interfacing/PIC18F_GPIO.X/MCAL/GPIO/hal_gpio.c</file>
             <file>file:/F:/Projects/Embedded/PIC/Code/PIC18F_Interfacing/PIC18F_GPIO.X/LIB/BIT_MATH.h</file>
+            <file>file:/F:/Projects/Embedded/PIC/Code/PIC18F_Interfacing/PIC18F_GPIO.X/Application.c</file>
             <file>file:/F:/Projects/Embedded/PIC/Code/PIC18F_Interfacing/PIC18F_GPIO.X/LIB/std_libraries.h</file>
             <file>file:/F:/Projects/Embedded/PIC/Code/PIC18F_Interfacing/PIC18F_GPIO.X/MCAL/GPIO/hal_gpio.h</file>
         </group>

@@ -4663,13 +4663,7 @@ typedef enum{
 
 # 1 "MCAL/GPIO/../device_config.h" 1
 # 18 "MCAL/GPIO/hal_gpio.h" 2
-
-
-
-
-
-
-
+# 27 "MCAL/GPIO/hal_gpio.h"
 typedef enum{
     GPIO_LOW,
     GPIO_HIGH
@@ -4707,7 +4701,7 @@ typedef struct{
     uint8 direction:1;
     uint8 state:1;
 }pin_t;
-# 73 "MCAL/GPIO/hal_gpio.h"
+# 75 "MCAL/GPIO/hal_gpio.h"
 STD_ReturnType gpio_pin_direction_initialize(const pin_t *_pin);
 
 
@@ -4744,7 +4738,7 @@ STD_ReturnType gpio_pin_toggle_logic(pin_t *_pin);
 
 
 
-STD_ReturnType gpio_port_direction_initialize(const port_index_t *_port, uint8 direction);
+STD_ReturnType gpio_port_direction_initialize(const port_index_t _port, uint8 direction);
 
 
 
@@ -4752,7 +4746,7 @@ STD_ReturnType gpio_port_direction_initialize(const port_index_t *_port, uint8 d
 
 
 
-STD_ReturnType gpio_port_get_direction_status(const port_index_t *_port, uint8* direction);
+STD_ReturnType gpio_port_get_direction_status(const port_index_t _port, uint8* direction);
 
 
 
@@ -4760,7 +4754,7 @@ STD_ReturnType gpio_port_get_direction_status(const port_index_t *_port, uint8* 
 
 
 
-STD_ReturnType gpio_port_write_logic(const port_index_t *_port, uint8 logic);
+STD_ReturnType gpio_port_write_logic(const port_index_t _port, uint8 logic);
 
 
 
@@ -4768,14 +4762,14 @@ STD_ReturnType gpio_port_write_logic(const port_index_t *_port, uint8 logic);
 
 
 
-STD_ReturnType gpio_port_read_logic(const port_index_t *_port, uint8* logic);
+STD_ReturnType gpio_port_read_logic(const port_index_t _port, uint8* logic);
 
 
 
 
 
 
-STD_ReturnType gpio_port_toggle_logic(const port_index_t *_port);
+STD_ReturnType gpio_port_toggle_logic(const port_index_t _port);
 # 9 "MCAL/GPIO/hal_gpio.c" 2
 
 
@@ -4785,14 +4779,7 @@ volatile uint8 *TRIS_REGESTERS[5] = {&TRISA, &TRISB, &TRISC, &TRISD, &TRISE};
 volatile uint8 *LAT_REGESTERS[5] = {&LATA, &LATB, &LATC, &LATD, &LATE};
 
 volatile uint8 *PORT_REGESTERS[5] = {&PORTA, &PORTB, &PORTC, &PORTD, &PORTE};
-STD_ReturnType ret = E_OK;
-
-
-
-
-
-
-
+# 25 "MCAL/GPIO/hal_gpio.c"
 STD_ReturnType gpio_pin_direction_initialize(const pin_t *_pin){
     STD_ReturnType ret = E_OK;
     if(((void*)0) == _pin){
@@ -4801,6 +4788,8 @@ STD_ReturnType gpio_pin_direction_initialize(const pin_t *_pin){
         switch(_pin->direction){
             case GPIO_OUTPUT:
                 ((*TRIS_REGESTERS[_pin->port]) &= (~(1<<_pin->pin)));
+
+                ((*LAT_REGESTERS[_pin->port]) &= (~(1<<_pin->pin)));
             break;
             case GPIO_INPUT:
                 ((*TRIS_REGESTERS[_pin->port]) |=(1<<_pin->pin));
@@ -4817,6 +4806,7 @@ STD_ReturnType gpio_pin_direction_initialize(const pin_t *_pin){
 
 
 STD_ReturnType gpio_pin_get_direction_status(pin_t *_pin){
+    STD_ReturnType ret = E_OK;
     if(((void*)0) == _pin){
         ret = E_NOT_OK;
     }else{
@@ -4831,6 +4821,7 @@ STD_ReturnType gpio_pin_get_direction_status(pin_t *_pin){
 
 
 STD_ReturnType gpio_pin_write_logic(const pin_t *_pin){
+    STD_ReturnType ret = E_OK;
     if(((void*)0) == _pin){
         ret = E_NOT_OK;
     }else{
@@ -4853,10 +4844,11 @@ STD_ReturnType gpio_pin_write_logic(const pin_t *_pin){
 
 
 STD_ReturnType gpio_pin_read_logic(pin_t *_pin){
+    STD_ReturnType ret = E_OK;
     if(((void*)0) == _pin){
         ret = E_NOT_OK;
     }else{
-        _pin->state = (((*LAT_REGESTERS[_pin->port])>>_pin->pin) & 1);
+        _pin->state = (((*PORT_REGESTERS[_pin->port])>>_pin->pin) & 1);
     }
     return ret;
 }
@@ -4867,6 +4859,7 @@ STD_ReturnType gpio_pin_read_logic(pin_t *_pin){
 
 
 STD_ReturnType gpio_pin_toggle_logic(pin_t *_pin){
+    STD_ReturnType ret = E_OK;
     if(((void*)0) == _pin){
         ret = E_NOT_OK;
     }else{
@@ -4874,13 +4867,15 @@ STD_ReturnType gpio_pin_toggle_logic(pin_t *_pin){
     }
     return ret;
 }
-# 115 "MCAL/GPIO/hal_gpio.c"
-STD_ReturnType gpio_port_direction_initialize(const port_index_t *_port, uint8 direction){
+# 121 "MCAL/GPIO/hal_gpio.c"
+STD_ReturnType gpio_port_direction_initialize(const port_index_t _port, uint8 direction){
     STD_ReturnType ret = E_OK;
-    if(((void*)0) == _port){
+    if(_port > 0x04){
         ret = E_NOT_OK;
     }else{
+        *TRIS_REGESTERS[_port] = direction;
 
+        *LAT_REGESTERS[_port] = 0X00;
     }
     return ret;
 }
@@ -4891,12 +4886,12 @@ STD_ReturnType gpio_port_direction_initialize(const port_index_t *_port, uint8 d
 
 
 
-STD_ReturnType gpio_port_get_direction_status(const port_index_t *_port, uint8* direction){
+STD_ReturnType gpio_port_get_direction_status(const port_index_t _port, uint8* direction){
     STD_ReturnType ret = E_OK;
-    if((((void*)0) == _port) || (((void*)0) == direction)){
+    if((_port > 0x04) || (((void*)0) == direction)){
         ret = E_NOT_OK;
     }else{
-
+        *direction = *TRIS_REGESTERS[_port];
     }
     return ret;
 }
@@ -4907,12 +4902,12 @@ STD_ReturnType gpio_port_get_direction_status(const port_index_t *_port, uint8* 
 
 
 
-STD_ReturnType gpio_port_write_logic(const port_index_t *_port, uint8 logic){
+STD_ReturnType gpio_port_write_logic(const port_index_t _port, uint8 logic){
     STD_ReturnType ret = E_OK;
-    if(((void*)0) == _port){
+    if(_port > 0x04){
         ret = E_NOT_OK;
     }else{
-
+        *LAT_REGESTERS[_port] = logic;
     }
     return ret;
 }
@@ -4923,12 +4918,12 @@ STD_ReturnType gpio_port_write_logic(const port_index_t *_port, uint8 logic){
 
 
 
-STD_ReturnType gpio_port_read_logic(const port_index_t *_port, uint8* logic){
+STD_ReturnType gpio_port_read_logic(const port_index_t _port, uint8* logic){
     STD_ReturnType ret = E_OK;
-    if((((void*)0) == _port) || (((void*)0) == logic)){
+    if((_port > 0x04) || (((void*)0) == logic)){
         ret = E_NOT_OK;
     }else{
-
+        *logic = *PORT_REGESTERS[_port];
     }
     return ret;
 }
@@ -4938,12 +4933,12 @@ STD_ReturnType gpio_port_read_logic(const port_index_t *_port, uint8* logic){
 
 
 
-STD_ReturnType gpio_port_toggle_logic(const port_index_t *_port){
+STD_ReturnType gpio_port_toggle_logic(const port_index_t _port){
     STD_ReturnType ret = E_OK;
-    if(((void*)0) == _port){
+    if(_port > 0x04){
         ret = E_NOT_OK;
     }else{
-
+        *LAT_REGESTERS[_port] = *LAT_REGESTERS[_port] ^ 0xFF;
     }
     return ret;
 }

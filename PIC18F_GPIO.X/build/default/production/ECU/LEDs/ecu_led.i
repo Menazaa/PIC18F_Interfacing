@@ -4665,13 +4665,7 @@ typedef enum{
 
 # 1 "ECU/LEDs/../../MCAL/GPIO/../device_config.h" 1
 # 18 "ECU/LEDs/../../MCAL/GPIO/hal_gpio.h" 2
-
-
-
-
-
-
-
+# 27 "ECU/LEDs/../../MCAL/GPIO/hal_gpio.h"
 typedef enum{
     GPIO_LOW,
     GPIO_HIGH
@@ -4709,7 +4703,7 @@ typedef struct{
     uint8 direction:1;
     uint8 state:1;
 }pin_t;
-# 73 "ECU/LEDs/../../MCAL/GPIO/hal_gpio.h"
+# 75 "ECU/LEDs/../../MCAL/GPIO/hal_gpio.h"
 STD_ReturnType gpio_pin_direction_initialize(const pin_t *_pin);
 
 
@@ -4746,7 +4740,7 @@ STD_ReturnType gpio_pin_toggle_logic(pin_t *_pin);
 
 
 
-STD_ReturnType gpio_port_direction_initialize(const port_index_t *_port, uint8 direction);
+STD_ReturnType gpio_port_direction_initialize(const port_index_t _port, uint8 direction);
 
 
 
@@ -4754,7 +4748,7 @@ STD_ReturnType gpio_port_direction_initialize(const port_index_t *_port, uint8 d
 
 
 
-STD_ReturnType gpio_port_get_direction_status(const port_index_t *_port, uint8* direction);
+STD_ReturnType gpio_port_get_direction_status(const port_index_t _port, uint8* direction);
 
 
 
@@ -4762,7 +4756,7 @@ STD_ReturnType gpio_port_get_direction_status(const port_index_t *_port, uint8* 
 
 
 
-STD_ReturnType gpio_port_write_logic(const port_index_t *_port, uint8 logic);
+STD_ReturnType gpio_port_write_logic(const port_index_t _port, uint8 logic);
 
 
 
@@ -4770,14 +4764,14 @@ STD_ReturnType gpio_port_write_logic(const port_index_t *_port, uint8 logic);
 
 
 
-STD_ReturnType gpio_port_read_logic(const port_index_t *_port, uint8* logic);
+STD_ReturnType gpio_port_read_logic(const port_index_t _port, uint8* logic);
 
 
 
 
 
 
-STD_ReturnType gpio_port_toggle_logic(const port_index_t *_port);
+STD_ReturnType gpio_port_toggle_logic(const port_index_t _port);
 # 13 "ECU/LEDs/ecu_led.h" 2
 # 9 "ECU/LEDs/ecu_led.c" 2
 
